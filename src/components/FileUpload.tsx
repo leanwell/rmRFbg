@@ -120,15 +120,17 @@ const FileUpload = () => {
       )}
 
       {isProcessing && (
-        <div className="progress-container">
-          <motion.div 
-            className="progress-bar"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="progress-text">{progress}%</span>
-          </motion.div>
+        <div className="progress-wrapper">
+          <div className="progress-container">
+            <motion.div 
+              className="progress-bar"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress}%` }}
+              transition={{ duration: 0.3 }}
+            >
+              <span className="progress-text">{progress}%</span>
+            </motion.div>
+          </div>
         </div>
       )}
 
