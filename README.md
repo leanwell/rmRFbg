@@ -1,69 +1,128 @@
-# React + TypeScript + Vite
+# rmRFbg - Background Removal Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Screenshot](./screenshots/s1.png)
 
-Currently, two official plugins are available:
+A modern React application for removing image backgrounds with AI-powered processing. Features light/dark theme toggle and multiple processing quality options.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🖼️ Upload and remove backgrounds from images  
+- 🎨 Switch between Neumorphism (light) and Glassmorphism (dark) themes  
+- ⚡ Three processing modes: Fast, Balanced, High Quality  
+- 💾 Download processed images in PNG format  
+- 📱 Fully responsive design  
+- 🌓 Automatic theme detection (respects system preferences)  
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🧰 Technologies Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ⚛️ React 18 with TypeScript  
+- 🚀 Vite build tool  
+- 🎨 CSS Modules with custom properties  
+- 🤖 [`@imgly/background-removal`](https://www.npmjs.com/package/@imgly/background-removal) for AI background removal  
+- ✨ Framer Motion (animations)  
+- 🔄 React Icons  
+
+---
+
+## ⚙️ Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/yourusername/rmRFbg.git
+cd rmRFbg
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### Start development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📜 Available Scripts
+
+| Command           | Description                  |
+|------------------|------------------------------|
+| `npm run dev`     | Start development server     |
+| `npm run build`   | Create production build      |
+| `npm run preview` | Preview production build     |
+| `npm run lint`    | Run ESLint                   |
+| `npm run check`   | TypeScript type checking     |
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+├── components/       # React components
+├── contexts/         # Context providers
+├── styles/           # CSS styles
+├── types/            # TypeScript types
+├── App.tsx           # Main application
+└── main.tsx          # Entry point
+```
+
+---
+
+## 🎨 Theming
+
+Customize styles in:
+
+- `src/styles/global.css` – CSS variables  
+- `src/styles/light.css` – Light theme  
+- `src/styles/dark.css` – Dark theme  
+- `src/contexts/ThemeContext.tsx` – Theme toggle logic  
+
+---
+
+## 🛠️ Configuration
+
+Modify background removal options in your upload logic (e.g., `App.tsx`):
+
+```ts
+const result = await removeBackground(file, {
+  model: 'isnet', // or 'isnet_fp16', 'isnet_quint8'
+  output: {
+    format: 'image/png',
+    quality: 0.8
+  }
+});
+```
+
+---
+
+## 🚀 Deployment
+
+### Create production build
+
+```bash
+npm run build
+```
+
+### Deploy the `dist/` folder to:
+
+- [Vercel](https://vercel.com)  
+- [Netlify](https://netlify.com)  
+- [GitHub Pages](https://pages.github.com)  
+- [Firebase Hosting](https://firebase.google.com/products/hosting)  
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
