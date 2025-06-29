@@ -17,6 +17,7 @@ function App() {
     link.type = 'image/png';
     link.href = favicon;
     const existingLinks = document.querySelectorAll('link[rel~="icon"]');
+    document.title = `rmRFbg - A Free Background Remover`;
     existingLinks.forEach(el => el.remove());
     
     document.head.appendChild(link);
