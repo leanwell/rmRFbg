@@ -44,6 +44,14 @@ function App() {
           </header>
           {isMounted && <FileUpload />}
         </motion.div>
+
+      <footer className="app-footer">
+        <div className="footer-content">
+          <p>&copy; leanwell {new Date().getFullYear()}</p>
+        </div>
+      </footer>
+
+
       </div>
     </ThemeProvider>
   );
