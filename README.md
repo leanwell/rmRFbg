@@ -33,7 +33,7 @@ A modern React application for removing image backgrounds with AI-powered proces
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/rmRFbg.git
+git clone https://github.com/leanwell/rmRFbg.git
 cd rmRFbg
 ```
 
@@ -84,7 +84,7 @@ Customize styles in:
 - `src/styles/global.css` – CSS variables  
 - `src/styles/light.css` – Light theme  
 - `src/styles/dark.css` – Dark theme  
-- `src/contexts/ThemeContext.tsx` – Theme toggle logic  
+- `src/contexts/ThemeContext.tsx` – Theme toggle 
 
 ---
 
