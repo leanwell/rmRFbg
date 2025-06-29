@@ -1,0 +1,1 @@
+export type ModelSize = 'isnet' | 'isnet_fp16' | 'isnet_quint8';

@@ -1,0 +1,17 @@
+.light .upload-container {
+  background: #f5f6fa;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+}
+
+.light .upload-area {
+  background: #f5f6fa;
+}
+
+.light .size-options button {
+  background: #f5f6fa;
+  box-shadow: 3px 3px 6px #d1d9e6, -3px -3px 6px #ffffff;
+}
+
+.light .size-options button.active {
+  box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
+}

@@ -1,0 +1,20 @@
+.dark .upload-container {
+  background: rgba(47, 53, 66, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .upload-area {
+  background: rgba(30, 39, 46, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .size-options button {
+  background: rgba(47, 53, 66, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .size-options button.active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
