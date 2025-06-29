@@ -2,6 +2,7 @@ import { useState, useRef, ChangeEvent } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { removeBackground } from '@imgly/background-removal';
 import { FaUpload, FaDownload, FaMagic } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 import SizeSelector from './SizeSelector';
 import ImagePreview from './ImagePreview';
 
@@ -12,6 +13,7 @@ const FileUpload = () => {
   const [originalImage, setOriginalImage] = useState<string | null>(null);
   const [processedImage, setProcessedImage] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [selectedSize, setSelectedSize] = useState<ModelSize>('isnet');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -29,9 +31,12 @@ const FileUpload = () => {
   const processImage = async () => {
     if (!originalImage) return;
     setIsProcessing(true);
+    setProgress(0);
+    
     try {
       const response = await fetch(originalImage);
       const blob = await response.blob();
+      
       const processedBlob = await removeBackground(blob, {
         model: selectedSize,
         output: { 
@@ -39,9 +44,11 @@ const FileUpload = () => {
           quality: 0.8
         },
         progress: (key, current, total) => {
-          console.log(`Downloading ${key}: ${current} of ${total}`);
+          const newProgress = Math.round((current / total) * 100);
+          setProgress(newProgress);
         }
       });
+      
       setProcessedImage(URL.createObjectURL(processedBlob));
     } catch (error) {
       console.error('Error removing background:', error);
@@ -109,6 +116,19 @@ const FileUpload = () => {
               <span>Remove Background</span>
             )}
           </button>
+        </div>
+      )}
+
+      {isProcessing && (
+        <div className="progress-container">
+          <motion.div 
+            className="progress-bar"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.3 }}
+          >
+            <span className="progress-text">{progress}%</span>
+          </motion.div>
         </div>
       )}
 
